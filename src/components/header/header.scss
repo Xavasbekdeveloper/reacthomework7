@@ -52,6 +52,7 @@
         background: #EDF2F4;
         padding-right: 26px;
         height: 32px;
+        // position: relative;
 
 
         &-input {
@@ -72,6 +73,35 @@
 
         &-btn svg {
             font-size: 18px;
+        }
+
+        &__bottom {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            background-color: #fff;
+            box-shadow: 1px 1px 5px #0002;
+            border-radius: 20px;
+            padding: 15px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            scrollbar-width: none;
+            transition: all .2s ease-in-out;
+
+            &-box {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                span {
+                    font-size: 16px;
+                }
+            }
         }
     }
 
@@ -129,4 +159,12 @@
         }
     }
 
+}
+
+@media (max-width: 550px) {
+    .header {
+        &__container{
+            flex-direction: column;
+        }
+    }
 }

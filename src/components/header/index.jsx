@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./header.scss";
 import logo from "../../assets/icons/logo.svg";
 import { IoMdClose } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
+import HeaderSearchModal from "./HeaderSearchModal";
+import axios from "../../api";
 
 const Header = () => {
   const [showList, setShowlist] = useState(false);
+  const [value, setValue] = useState("");
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (!value.trim()) return;
+    axios
+      .get(`/products/search?q=${value.trim()}`)
+      .then((res) => setData(res.data.products))
+      .catch((err) => console.log(err));
+  }, [value]);
 
   return (
     <header className="header">
@@ -55,16 +67,21 @@ const Header = () => {
             <a href="#" className="header__link header__hide-link">
               About Us
             </a>
-            <div className="header__search">
-              <input
-                type="text"
-                className="header__search-input"
-                placeholder="Search Product"
-              />
-              <button className="header__search-btn">
-                <IoSearchOutline />
-              </button>
-            </div>
+            <form action="">
+              <div className="header__search">
+                <input
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  type="text"
+                  className="header__search-input"
+                  placeholder="Search Product"
+                />
+                <button className="header__search-btn">
+                  <IoSearchOutline />
+                </button>
+                {value.trim() ? <HeaderSearchModal data={data} /> : <></>}
+              </div>
+            </form>
             <button
               className="header__bar-btn"
               onClick={() => setShowlist(true)}
