@@ -1,0 +1,132 @@
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+
+        &-close {
+            display: none;
+        }
+    }
+
+    &__hide-item {
+        display: none;
+    }
+
+    &__link {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.36px;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            color: #ff0000;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+    }
+
+    &__search {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 10px;
+        background: #EDF2F4;
+        padding-right: 26px;
+        height: 32px;
+
+
+        &-input {
+            border: none;
+            background: transparent;
+            height: 100%;
+            outline: none;
+            padding-left: 10px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16.94px;
+            color: #00000080;
+
+            &::placeholder {
+                color: #00000080;
+            }
+        }
+
+        &-btn svg {
+            font-size: 18px;
+        }
+    }
+
+    &__bar-btn {
+        display: none;
+
+        svg {
+            font-size: 20px;
+        }
+    }
+}
+
+@media (max-width: 875px) {
+    .header {
+
+        &__list {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #fff;
+            box-shadow: 0 0 1px 1px gray;
+            padding-top: 50px;
+            transition: all .3s ease-in-out;
+
+            &-close {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                display: block;
+
+                svg {
+                    color: #ff0000;
+                    font-size: 25px;
+                }
+            }
+        }
+
+        &__hide-item {
+            display: block;
+        }
+
+        &__hide-link {
+            display: none;
+        }
+
+        &__show-list {
+            left: 0;
+        }
+    
+        &__bar-btn {
+            display: block;
+        }
+    }
+
+}
