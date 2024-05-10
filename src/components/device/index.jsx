@@ -10,7 +10,7 @@ const Device = () => {
         <span className="device__text">about us</span>
         <h2 className="device__title">
           If you’re looking for a Premium Quality Tempered Glass or Back-cover
-          for your Device{" "}
+          for your Device
         </h2>
         <p className="device__desc">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
